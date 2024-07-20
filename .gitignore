@@ -12,4 +12,6 @@ next-env.d.ts
 app
 dist
 
+.DS_Store
+*.lock
 /.vscode
