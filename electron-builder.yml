@@ -1,6 +1,6 @@
 appId: com.example.nextron
-productName: My Nextron App
-copyright: Copyright © 2018 Yoshihide Shiono
+productName: UPBITO
+copyright: Copyright © 2024 coyaSONG
 directories:
   output: dist
   buildResources: resources
