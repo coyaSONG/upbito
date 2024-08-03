@@ -2,6 +2,16 @@ import path from "path";
 import { app, ipcMain } from "electron";
 import serve from "electron-serve";
 import { createWindow } from "./helpers";
+// import UpbitApi from "./helpers/upbitApi";
+import QuoationService from "./helpers/upbit/quoationService";
+
+// const upbitApi = new UpbitApi(
+//   process.env.UPBIT_ACCESS_KEY ?? "",
+//   process.env.UPBIT_SECRET_KEY ?? "",
+// );
+//
+
+const quoationService = new QuoationService();
 
 const isProd = process.env.NODE_ENV === "production";
 
@@ -35,6 +45,11 @@ app.on("window-all-closed", () => {
   app.quit();
 });
 
-ipcMain.on("message", async (event, arg) => {
-  event.reply("message", `${arg} World!`);
+ipcMain.on("getMarketAllInfo", async (event) => {
+  try {
+    const marketData = await quoationService.getMarketAllInfo();
+    event.reply("getMarketAllInfoReply", marketData);
+  } catch (err) {
+    event.reply("getMarketAllInfoReply", { error: err });
+  }
 });

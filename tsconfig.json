@@ -16,7 +16,9 @@
     "jsx": "preserve",
     "baseUrl": ".",
     "paths": {
-      "@/*": ["renderer/*"]
+      "@/*": ["renderer/*"],
+      "@main/*": ["main/*"],
+      "@shared/*": ["shared/*"]
     },
     "plugins": [
       {
@@ -24,11 +26,5 @@
       }
     ]
   },
-  // "include": [
-  //   "renderer/**/*.ts",
-  //   "renderer/**/*.tsx",
-  //   "main/**/*.ts",
-  //   "main/**/*.js"
-  // ],
   "exclude": ["node_modules", "renderer/next.config.js", "dist", "app"]
 }
