@@ -1,22 +1,10 @@
-import {
-  ICandleDayReturnProps,
-  ICandleReturnProps,
-  ICandleWeekReturnProps,
-  ICandlesDayProps,
-  ICandlesMinutesProps,
-  ICandlesMonthProps,
-  ICandlesMonthReturnProps,
-  ICandlesWeekProps,
-  IMarketAllInfoProps,
-  IOrderbookProps,
-  ITickerProps,
-} from "@shared/types/quotation";
+import { Utype } from "@shared/types/quotation";
 
 export default interface QuotationInterface {
   /**
    * 마켓 코드 조회
    */
-  getMarketAllInfo: () => Promise<IMarketAllInfoProps>;
+  getMarketAllInfo: () => Promise<Utype.IMarketAllInfoProps>;
 
   /******************************************************************************
    * 시세 캔들 조회
@@ -29,26 +17,28 @@ export default interface QuotationInterface {
    * @param to?: string;
    */
   getMinutesCandles: (
-    param: ICandlesMinutesProps,
-  ) => Promise<ICandleReturnProps[]>;
+    param: Utype.ICandlesMinutesProps,
+  ) => Promise<Utype.ICandleReturnProps[]>;
 
   /**
    * 일 캔들 조회
    */
-  getDayCandles: (param: ICandlesDayProps) => Promise<ICandleDayReturnProps[]>;
+  getDayCandles: (
+    param: Utype.ICandlesDayProps,
+  ) => Promise<Utype.ICandleDayReturnProps[]>;
 
   /**
    * 주 캔들 조회
    */
   getWeekCandles: (
-    param: ICandlesWeekProps,
-  ) => Promise<ICandleWeekReturnProps[]>;
+    param: Utype.ICandlesWeekProps,
+  ) => Promise<Utype.ICandleWeekReturnProps[]>;
   /**
    * 월 캔들 조회
    */
   getMonthCandles: (
-    param: ICandlesMonthProps,
-  ) => Promise<ICandlesMonthReturnProps[]>;
+    param: Utype.ICandlesMonthProps,
+  ) => Promise<Utype.ICandlesMonthReturnProps[]>;
   /******************************************************************************
    * 시세 Ticker 조회
    ******************************************************************************/
@@ -58,7 +48,7 @@ export default interface QuotationInterface {
    * @param marketCoinCode: string  => KRW-BTC  or   KRW-BTC,BTC-IOST
    * @return Promise<ITickerProps[]>
    */
-  getTicker(param: string[]): Promise<ITickerProps[]>;
+  getTicker(param: string[]): Promise<Utype.ITickerProps[]>;
 
   /******************************************************************************
    * 시세 호가 정보(Orderbook) 조회
@@ -68,5 +58,5 @@ export default interface QuotationInterface {
    * @param marketCoinCode: string  => KRW-BTC  or   KRW-BTC,BTC-IOST
    * @return Promise<IOrderbookProps[]>
    */
-  getOrderbook: (param: string[]) => Promise<IOrderbookProps[]>;
+  getOrderbook: (param: string[]) => Promise<Utype.IOrderbookProps[]>;
 }

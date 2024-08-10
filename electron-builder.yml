@@ -1,4 +1,4 @@
-appId: com.example.nextron
+appId: com.example.upbito
 productName: UPBITO
 copyright: Copyright © 2024 coyaSONG
 directories:
@@ -9,4 +9,6 @@ files:
     filter:
       - package.json
       - app
+externals:
+  - ws
 publish: null

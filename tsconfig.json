@@ -19,12 +19,7 @@
       "@/*": ["renderer/*"],
       "@main/*": ["main/*"],
       "@shared/*": ["shared/*"]
-    },
-    "plugins": [
-      {
-        "name": "next"
-      }
-    ]
+    }
   },
   "exclude": ["node_modules", "renderer/next.config.js", "dist", "app"]
 }

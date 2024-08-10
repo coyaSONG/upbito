@@ -1,17 +1,4 @@
-import {
-  ICandleDayReturnProps,
-  ICandleReturnProps,
-  ICandleWeekReturnProps,
-  ICandlesDayProps,
-  ICandlesMinutesProps,
-  ICandlesMonthProps,
-  ICandlesMonthReturnProps,
-  ICandlesWeekProps,
-  IMarketAllInfoProps,
-  IMarketCoinProps,
-  IOrderbookProps,
-  ITickerProps,
-} from "@shared/types/quotation";
+import { Utype } from "@shared/types/quotation";
 import Constants from "./constant";
 import QuotationInterface from "./interface/quotation";
 import CustomAxios from "./customAxios";
@@ -33,14 +20,14 @@ export default class QuoationService
   /**
    * 마켓 코드 조회 (access key 필요없음)
    */
-  async getMarketAllInfo(): Promise<IMarketAllInfoProps> {
+  async getMarketAllInfo(): Promise<Utype.IMarketAllInfoProps> {
     try {
-      const { data } = await super.getData<IMarketCoinProps[]>({
+      const { data } = await super.getData<Utype.IMarketCoinProps[]>({
         method: "GET",
         url: Constants.MARKET_ALL_URL,
       });
 
-      let returnObj: IMarketAllInfoProps = { KRW: [], BTC: [], USDT: [] };
+      let returnObj: Utype.IMarketAllInfoProps = { KRW: [], BTC: [], USDT: [] };
       data.forEach((item) => {
         const marketPlace = item.market.split("-")[0];
         if (marketPlace === "KRW") {
@@ -72,9 +59,9 @@ export default class QuoationService
     marketCoin,
     count,
     to,
-  }: ICandlesMinutesProps): Promise<ICandleReturnProps[]> {
+  }: Utype.ICandlesMinutesProps): Promise<Utype.ICandleReturnProps[]> {
     try {
-      const { data } = await super.getData<ICandleReturnProps[]>({
+      const { data } = await super.getData<Utype.ICandleReturnProps[]>({
         method: "GET",
         url: `${
           Constants.CANDLES_MINUTES_URL
@@ -103,9 +90,9 @@ export default class QuoationService
     marketCoin,
     count,
     to,
-  }: ICandlesDayProps): Promise<ICandleDayReturnProps[]> {
+  }: Utype.ICandlesDayProps): Promise<Utype.ICandleDayReturnProps[]> {
     try {
-      const { data } = await super.getData<ICandleDayReturnProps[]>({
+      const { data } = await super.getData<Utype.ICandleDayReturnProps[]>({
         method: "GET",
         url: `${
           Constants.CANDLES_DAY_URL
@@ -129,9 +116,9 @@ export default class QuoationService
     marketCoin,
     count,
     to,
-  }: ICandlesWeekProps): Promise<ICandleWeekReturnProps[]> {
+  }: Utype.ICandlesWeekProps): Promise<Utype.ICandleWeekReturnProps[]> {
     try {
-      const { data } = await super.getData<ICandleWeekReturnProps[]>({
+      const { data } = await super.getData<Utype.ICandleWeekReturnProps[]>({
         method: "GET",
         url: `${
           Constants.CANDLES_WEEK_URL
@@ -154,9 +141,9 @@ export default class QuoationService
     marketCoin,
     count,
     to,
-  }: ICandlesMonthProps): Promise<ICandlesMonthReturnProps[]> {
+  }: Utype.ICandlesMonthProps): Promise<Utype.ICandlesMonthReturnProps[]> {
     try {
-      const { data } = await super.getData<ICandlesMonthReturnProps[]>({
+      const { data } = await super.getData<Utype.ICandlesMonthReturnProps[]>({
         method: "GET",
         url: `${
           Constants.CANDLES_MONTH_URL
@@ -181,9 +168,9 @@ export default class QuoationService
    * @param marketCoinCode: string[]  => KRW-BTC  or   KRW-BTC,BTC-IOST
    * @return Promise<ITickerProps[]>
    */
-  async getTicker(marketCoinCode: string[]): Promise<ITickerProps[]> {
+  async getTicker(marketCoinCode: string[]): Promise<Utype.ITickerProps[]> {
     try {
-      const { data } = await super.getData<ITickerProps[]>({
+      const { data } = await super.getData<Utype.ITickerProps[]>({
         method: "GET",
         url: `${Constants.TICKER_URL}?markets=${marketCoinCode.join(",")}`,
       });
@@ -208,7 +195,7 @@ export default class QuoationService
    */
   async getOrderbook(marketCoinCode: string[]) {
     try {
-      const { data } = await super.getData<IOrderbookProps[]>({
+      const { data } = await super.getData<Utype.IOrderbookProps[]>({
         method: "GET",
         url: `${Constants.ORDER_BOOK_URL}?markets=${marketCoinCode.join(",")}`,
       });
