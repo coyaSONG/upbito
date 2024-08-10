@@ -5,7 +5,8 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "app/**/*"
+    "app/**/*",
+    "../app/types/**/*.ts"
   ],
   "exclude": [
     "node_modules"

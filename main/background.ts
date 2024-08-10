@@ -45,15 +45,6 @@ app.on("window-all-closed", () => {
   app.quit();
 });
 
-// ipcMain.on("getMarketAllInfo", async (event) => {
-//   try {
-//     const marketData = await quoationService.getMarketAllInfo();
-//     event.reply("getMarketAllInfoReply", marketData);
-//   } catch (err) {
-//     event.reply("getMarketAllInfoReply", { error: err });
-//   }
-// });
-
 ipcMain.on("getMarketAllInfo", async (event) => {
   try {
     const marketData = await quoationService.getMarketAllInfo();
